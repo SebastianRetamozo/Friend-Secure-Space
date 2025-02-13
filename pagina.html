@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refugio Emocional</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            text-align: center;
+            background-color: #ffe6f2;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            color: #d63384;
+            font-size: 28px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        button {
+            background-color: #ff66a3;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #e60073;
+        }
+        #motivation, #poema {
+            font-style: italic;
+            color: #5a5a5a;
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff0f5;
+            border-left: 4px solid #ff3385;
+            border-radius: 8px;
+        }
+        .imagen-cascada {
+            position: absolute;
+            width: 100px;
+            opacity: 0;
+            animation: caer 5s linear infinite;
+            clip-path: path("M50 15L61.8 7.5Q75 0 87.5 12.5Q100 25 87.5 45Q75 65 50 85Q25 65 12.5 45Q0 25 12.5 12.5Q25 0 38.2 7.5Z");
+        }
+        @keyframes caer {
+            0% { transform: translateY(-100px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🌸 Bienvenida, Ariana, a tu Refugio Emocional 🌸</h1>
+    <div class="container">
+        <p id="mensaje">Aquí encontrarás apoyo, tranquilidad y palabras que acaricien tu alma. 💖</p>
+        
+        <button onclick="mostrarMensaje()">💌 Mensaje de Ánimo</button>
+        <p id="motivation"></p>
+        
+        <button onclick="mostrarPoema()">📜 Poema Especial</button>
+        <p id="poema"></p>
+    </div>
+
+    <script>
+        function mostrarMensaje() {
+            const mensajes = [
+                "Eres un rayo de luz en este mundo, nunca lo olvides.",
+                "Cada día es una nueva oportunidad para escribir tu historia.",
+                "Tu sonrisa ilumina más de lo que imaginas.",
+                "Siempre hay alguien que te quiere y te valora inmensamente.",
+                "Mereces todo el amor y la felicidad del universo." 
+            ];
+            const mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
+            document.getElementById("motivation").innerText = mensajeAleatorio;
+        }
+        
+        function mostrarPoema() {
+            const poemas = [
+                "En la brisa de la noche susurra tu nombre,\ncomo un eco dulce que nunca se esconde.\nTu esencia es arte, es fuego y canción,\nun alma tan pura, un tierno rincón.",
+                "Eres el sol que abraza la aurora,\nel susurro del viento en mi corazón.\nCada día, cada hora,\ntu amor es mi más bella razón.",
+                "Si pudiera pintar las estrellas,\nlas haría brillar solo para ti.\nPorque en cada destello reflejan,\nlo especial que eres para mí.",
+                "Cierra los ojos y siente el latido,\nel mundo aún guarda cosas hermosas.\nEres un sueño jamás perdido,\nuna flor en tierras rocosas.",
+                "Eres la melodía que endulza mis días,\nla calma, el refugio, la brisa.\nEn cada verso, en cada poesía,\neres la magia que nunca se eclipsa."
+            ];
+            const poemaAleatorio = poemas[Math.floor(Math.random() * poemas.length)];
+            document.getElementById("poema").innerText = poemaAleatorio;
+        }
+
+        function crearImagenCascada() {
+            const imagenes = ["imagen1.png", "imagen2.png", "imagen3.png"];
+            const img = document.createElement("img");
+            img.src = imagenes[Math.floor(Math.random() * imagenes.length)];
+            img.className = "imagen-cascada";
+            img.style.left = Math.random() * window.innerWidth + "px";
+            document.body.appendChild(img);
+            setTimeout(() => img.remove(), 5000);
+        }
+        setInterval(crearImagenCascada, 1000);
+    </script>
+</body>
+</html>
+
