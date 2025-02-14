@@ -9,6 +9,10 @@
             font-family: 'Georgia', serif;
             text-align: center;
             background-color: #ffe6f2;
+            background-image: url('flor1.png'), url('flor2.png');
+            background-position: bottom left, bottom right;
+            background-size: 150px, 150px;
+            background-repeat: no-repeat;
             padding: 20px;
             overflow: hidden;
         }
@@ -57,10 +61,14 @@
             width: 100px;
             opacity: 0;
             animation: caer 5s linear infinite;
+            top: -100px;
+            left:50%;
+            transform: translateX(-50%);
             clip-path: path("M50 15L61.8 7.5Q75 0 87.5 12.5Q100 25 87.5 45Q75 65 50 85Q25 65 12.5 45Q0 25 12.5 12.5Q25 0 38.2 7.5Z");
         }
         @keyframes caer {
             0% { transform: translateY(-100px); opacity: 1; }
+            80% {opacity: 1;}
             100% { transform: translateY(100vh); opacity: 0; }
         }
     </style>
@@ -75,6 +83,9 @@
         
         <button onclick="mostrarPoema()">📜 Poema Especial</button>
         <p id="poema"></p>
+
+        <button onclick="abrirFlor3D()">🌺 Generar Flor en 3D</button>
+
     </div>
 
     <script>
@@ -103,7 +114,7 @@
         }
 
         function crearImagenCascada() {
-            const imagenes = ["imagen1.png", "imagen2.png", "imagen3.png"];
+            const imagenes = ["imagen1.png", "imagen2.png", "imagen3.png", "imagen4.png. imagen5.png"];
             const img = document.createElement("img");
             img.src = imagenes[Math.floor(Math.random() * imagenes.length)];
             img.className = "imagen-cascada";
@@ -112,6 +123,47 @@
             setTimeout(() => img.remove(), 5000);
         }
         setInterval(crearImagenCascada, 1000);
+
+        function abrirFlor3D() {
+        let ventana = window.open('', '_blank', 'width=400,height=400');
+        ventana.document.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Flor en 3D</title>
+                <style>
+                    body { text-align: center; font-family: Arial, sans-serif; }
+                    canvas { display: block; margin: auto; }
+                </style>
+            </head>
+            <body>
+                <h2>Presiona para generar la flor</h2>
+                <button onclick="dibujarFlor()">🌸 Generar</button>
+                <canvas id="canvas" width="300" height="300"></canvas>
+                <script>
+                    function dibujarFlor() {
+                        let canvas = document.getElementById('canvas');
+                        let ctx = canvas.getContext('2d');
+                        let petals = 6;
+                        let angle = Math.PI * 2 / petals;
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                        ctx.fillStyle = '#ff66a3';
+                        for (let i = 0; i < petals; i++) {
+                            ctx.beginPath();
+                            ctx.ellipse(150, 150, 50, 80, angle * i, 0, Math.PI * 2);
+                            ctx.fill();
+                        }
+                        ctx.beginPath();
+                        ctx.arc(150, 150, 30, 0, Math.PI * 2);
+                        ctx.fillStyle = 'yellow';
+                        ctx.fill();
+                    }
+                <\/script>
+            </body>
+            </html>
+        `);
+    }
+
     </script>
 </body>
 </html>
