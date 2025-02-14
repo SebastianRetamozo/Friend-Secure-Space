@@ -31,7 +31,7 @@ function mostrarPoema() {
 }
 
 function abrirFlor3D() {
-    window.open("flor3D.html", "_blank", "width=400,height=400");
+    window.open("flor3d.html", "_blank", "width=400,height=400");
 }
 
 document.addEventListener("DOMContentLoaded", function () {
