@@ -1,5 +1,7 @@
 body {
-    background-color: #ffd6e0; /* Fondo rosado bonito */
+    background-color: #ffd6e0;
+    background: url('flor1.png') repeat;
+    background-size: 100px; /* Ajusta el tamaño de las flores *//* Fondo rosado bonito */
     color: #ff4081;
     font-family: Arial, sans-serif;
     text-align: center;
